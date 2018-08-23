@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.10
+    working_directory: /go/src/github.com/sters/maputils
+    steps:
+      - checkout
+      - run: make cover
+      - run: bash <(curl -s https://codecov.io/bash)
